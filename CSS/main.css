@@ -8,6 +8,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    font-family: MyFont;
+}
 
 .container {
     width: 95%;
@@ -16,16 +19,136 @@
     overflow: hidden;
 }
 
-h1 {
-    margin: 0 auto;
+
+.hero {
     width: 100%;
     height: 90vh;
+    position: relative;
+    display: flex;
+    gap: 1em;
+    padding: .5em;
+}
+.hero-bg {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 11rem;
+    position: absolute;
+}
+.hero-bg h1 {
+    z-index: -1;
+    margin: 0 auto;
+    width: fit-content;
+    color: #f0f0f0;
+    font-size: 9rem;
     font-weight: 1000;
     font-family: MyFont;
-    letter-spacing: .3em;
-    color: #e1e1e1;
+    letter-spacing: .5em;
 }
+.hero .left, .right {
+    width: 30%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.hero .left h1, .right h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.hero .left .row, .right .row {
+    width: 80%;
+    margin: 0 auto;
+}
+.hero .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    position: relative;
+}
+.hero .middle img {
+    position: relative;
+    width: 100%;
+}
+.hero .middle .pan {
+    right: 120px;
+    z-index: 1;
+    transform: rotate(-15deg);
+}
+.hero .middle .vegetables {
+    bottom: 30px;
+    left: 120px;
+    z-index: 2;
+}
+
+
+
+@media (max-width: 1024px){
+    .hero-bg h1 {
+        font-size: 6rem;
+    }
+}
+@media (max-width: 768px){
+    .hero-bg h1 {
+        font-size: 5rem;
+    }
+    .hero .left h1, .right h1 {
+        font-size: 1.3rem;
+    }
+    .hero .left .row, .right .row {
+        width: 100%;
+    }
+    .hero .middle .pan {
+        right: 80px;
+    }
+    .hero .middle .vegetables {
+        left: 80px;
+    }
+}
+@media (max-width: 600px){
+    .hero {
+        padding: 0;
+    }
+    .hero-bg h1 {
+        transform: rotate(-90deg);
+        font-size: 5rem;
+        z-index: -1;
+    }
+    .hero .left h1, .right h1 {
+        font-size: 1rem;
+    }
+    .hero .left p, .right p {
+        font-size: .8rem;
+    }
+/*     .hero {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero .left, .middle, .right {
+        width: 100%;
+    } */
+    .hero .middle .pan {
+        right: 50px;
+        z-index: 1;
+        transform: rotate(-15deg);
+    }
+    .hero .middle .vegetables {
+        left: 50px;
+        bottom: 30px;
+        z-index: 2;
+    }
+    
+}
+/* @media (max-width: 480px){
+    .hero .middle .pan {
+        left: 30px;
+    }
+    .hero .middle .vegetables {
+        top: 130px;
+        right: 60px;
+    }
+}
+ */
