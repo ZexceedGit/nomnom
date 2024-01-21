@@ -1,0 +1,154 @@
+@font-face {
+    font-family: MyFont;
+    src: url('../assets/fonts/Poppins-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-size: 1.25rem;
+    font-family: MyFont;
+    overflow: hidden;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.color-1 {
+    color: green;
+}
+
+header {
+    height: 10vh;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.left, .middle, .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header ul {
+    display: flex;
+    gap: 1em;
+}
+header ul li {
+    list-style-type: none;
+}
+header a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #000;
+}
+header .search {
+    padding: 1em 2em;
+}
+header .call-action {
+    background-color: green;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+    border: none;
+    border-radius: .5em;
+}
+header .call-action a {
+    background-color: green;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.nav-menu {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    gap: 50px;
+}
+.nav-menu-btn {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    gap: .2em;
+    height: fit-content;
+    padding: .3em;
+    z-index: 2;
+}
+.nav-menu-btn span {
+    border-radius: 2px;
+    width: 30px;
+    padding: .1em;
+    background-color: #000;
+}
+
+
+
+
+
+main {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+}
+
+main iframe {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px){
+    .middle nav {
+        display: none;
+    }
+    .right .call-action {
+        display: none;
+    }
+    .nav-menu {
+        padding: 50px 1em;
+    }
+    .nav-menu-btn {
+        display: flex;
+    }
+    .nav-menu, .nav-menu .call-action, .nav-menu nav ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .call-action {
+        width: 15rem;
+    }
+}
