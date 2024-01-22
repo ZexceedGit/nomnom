@@ -22,6 +22,7 @@
                 </nav>
             </div>
             <div class="right">
+
                 <div class="search">
                     <span class="search-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -29,16 +30,25 @@
                           </svg>
                     </span>
                 </div>
+
+
+
                 <div class="call-action">
                     <a href="#" >Create an account</a>
                 </div>
 
-                <div class="nav-menu-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="nav-menu">
+
+                <input type="checkbox" id="nav-menu-btn" hidden>
+                <label class="nav-menu-btn" for="nav-menu-btn">
+                    <span id="1"></span>
+                    <span id="2"></span>
+                    <span id="3"></span>
+                </label>
+
+
+
+                <div class="nav-menu" id="nav-menu">
+
                     <nav>
                         <ul>
                             <li><a href="#">Home</a></li>
@@ -46,10 +56,15 @@
                             <li><a href="#">Meal Plan</a></li>
                         </ul>
                     </nav>
+
                     <div class="call-action">
                         <a href="#">Create an account</a>
                     </div>
+
                 </div>
+
+
+
             </div>
         </div>
     </header>
@@ -57,5 +72,8 @@
     <main>
         <iframe src="src/components/main.html" frameborder="0"></iframe>
     </main>
+
+
+    <script src="JS/index.js"></script>
 </body>
 </html>
