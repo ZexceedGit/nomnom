@@ -1,0 +1,32 @@
+@font-face {
+    font-family: MyFont;
+    src: url('../assets/fonts/Poppins-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-size: 1.25rem;
+    font-family: MyFont;
+    overflow-x: hidden;
+}
+.bg-color-1 {
+    background-color: rgb(248, 251, 240);
+}
+.color-1 {
+    color: yellowgreen;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
