@@ -14,6 +14,7 @@ html::-webkit-scrollbar {
 body {
     font-family: MyFont;
     padding-bottom: 50px;
+    overflow-x: hidden;
 }
 
 .container {
@@ -110,7 +111,7 @@ body {
 
 
 .features {
-/*     border-radius: 5em; */
+    border-radius: 1em;
     width: 100%;
     background-color: rgb(27, 40, 7);
     animation: fadein .3s ease-in-out;
@@ -142,17 +143,59 @@ body {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    padding: 50px 0;
 }
 .featured-foods .top, .featured-foods .middle, .featured-foods .bottom {
-    padding: 50px .5em;
+    padding: .5em;
     animation: fadein .3s ease-in-out;
     animation-timeline: view();
 }
 .featured-foods .slider {
     width: 100%;
-    height: 30vh;
+    height: 13rem;
+    overflow-y: hidden;
+    background-color: blue;
+    position: relative;
+}
+.featured-foods .inner-slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    height: 100%;
+    width: fit-content;
+    transition: transform .5s ease-in;
     padding: .5em;
 }
+.featured-foods .slider::-webkit-scrollbar {
+    display: none;
+}
+.featured-foods .slider-item {
+    width: 300px;
+    height: 170px;
+    background-color: yellow;
+}
+/* .featured-foods .slider .prev {
+    opacity: 0;
+    position: absolute;
+    left: .5em;
+    top: 5.5rem;
+    padding: .5em;
+    border-radius: 5em;
+    border: none;
+    font-size: 1rem;
+    background-color: red;
+}
+.featured-foods .slider .next {
+    position: absolute;
+    right: .5em;
+    top: 5.5rem;
+    padding: .5em;
+    border-radius: 5em;
+    border: none;
+    font-size: 1rem;
+    background-color: red;
+} */
 
 
 
