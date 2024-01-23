@@ -205,17 +205,19 @@ body {
 
 .meal-plan-section {
     width: 100%;
+    height: fit-content;
     padding: 50px .5em;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    gap: 50px;
     animation: fadein .3s ease-in-out;
     animation-timeline: view();
 }
 .meal-plan-section .left, .meal-plan-section .right {
     width: 45%;
-    height: 90vh;
+    height: 100vh;
 }
 .meal-plan-section img {
     width: 100%;
@@ -224,19 +226,62 @@ body {
 }
 .meal-plan-section .top h2 {
     font-size: 2rem;
+    color: rgb(27, 40, 7);
+}
+.meal-plan-section .top p {
+    font-size: 1rem;
+    opacity: .8;
+    text-transform: capitalize;
 }
 .meal-plan-section ul {
-    height: 80vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 50px .5em;
+    gap: 1em;
 }
 .meal-plan-section li {
     width: 80%;
     margin: 0 auto;
     transition: scale .3s ease-in-out, opacity .3s ease-in-out;
     opacity: .7;
+    text-transform: capitalize;
+}
+
+
+.meal-plan-action {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px .5em;
+    gap: 1em;
+    animation: fadein .3s ease-in-out;
+    animation-timeline: view();
+}
+.meal-plan-action h2 {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    color: rgb(27, 40, 7);
+}
+.meal-plan-action p {
+    font-size: 1rem;
+    width: 40%;
+    text-align: center;
+    opacity: .8;
+}
+.meal-plan-action a {
+    width: 20%;
+    text-align: center;
+    padding: 1em;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(27, 40, 7);
+    border: none;
+    border-radius: 1em;
 }
 
 
@@ -245,7 +290,7 @@ body {
         scale: .9;
         opacity: 0;
     }
-    50% {
+    30% {
         scale: 1;
         opacity: 1;
     }
@@ -291,4 +336,18 @@ body {
     .meal-plan-section .left, .meal-plan-section .right {
         width: 100%;
     }
+    .meal-plan-section li {
+        width: 90%;
+    }
+
+    .meal-plan-action {
+        width: 100%;
+    }
+    .meal-plan-action p {
+        width: 80%;
+    }
+    .meal-plan-action a {
+        width: 50%;
+    }
+    
 }

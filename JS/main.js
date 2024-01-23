@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
     .catch(err => console.error(err));
 
     const urlVideos = `https://api.spoonacular.com/food/videos/search?apiKey=5a095273a4624c4496872f4674ee9c6e`
-    fetch(`${urlVideos}&query=vegetarian&number=5`)
+    fetch(`${urlVideos}&query=vegetables&number=5`)
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -61,4 +61,4 @@ setInterval(() => {
     else{
         currentStep = 0;
     }
-}, 2000);
+}, 3000);
