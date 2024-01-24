@@ -1,9 +1,10 @@
+const apiKey = '5a095273a4624c4496872f4674ee9c6e';
 window.addEventListener('load', () => {
 
     const innerSlider = document.getElementById('inner-slider');
     const innerSliderVideos = document.getElementById('inner-slider-videos');
     
-    const url = `https://api.spoonacular.com/recipes/random?apiKey=5a095273a4624c4496872f4674ee9c6e`;
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`;
     fetch(`${url}&number=5`)
     .then(res => res.json())
     .then(data => {
@@ -20,7 +21,7 @@ window.addEventListener('load', () => {
 
     .catch(err => console.error(err));
 
-    const urlVideos = `https://api.spoonacular.com/food/videos/search?apiKey=5a095273a4624c4496872f4674ee9c6e`
+    const urlVideos = `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}`;
     fetch(`${urlVideos}&query=vegetables&number=5`)
     .then(res => res.json())
     .then(data => {
