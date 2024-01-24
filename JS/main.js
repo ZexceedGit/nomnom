@@ -24,11 +24,9 @@ window.addEventListener('load', () => {
     fetch(`${urlVideos}&query=vegetables&number=5`)
     .then(res => res.json())
     .then(data => {
-        console.log(data);
         data.videos.map(videos => {
             const itemDiv = document.createElement('div');
             const img = videos.thumbnail;
-            console.log(img);
 
             itemDiv.className = 'slider-item';
             itemDiv.style.backgroundImage = `url(${img})`;

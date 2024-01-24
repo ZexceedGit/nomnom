@@ -1,12 +1,14 @@
 window.addEventListener('load', () => {
 
-    const triviaText = document.getElementById('trivia-text');
+    const triviaText = document.getElementById('trivia-text-p');
 
-    url = ``;
+    url = `https://api.spoonacular.com/food/trivia/random?apiKey=5a095273a4624c4496872f4674ee9c6e`;
 
     fetch(url)
-    .then(res => res.json)
-    .then(data => console.log(data))
+    .then(res => res.json())
+    .then(data => {
+        triviaText.textContent = data.text;
+    })
     .catch(err => console.error(err));
 
 });
@@ -14,10 +16,14 @@ window.addEventListener('load', () => {
 const query = document.getElementById('query').value;
 const searchBtn = document.getElementById('search-btn');
 const categories = document.querySelectorAll('.category');
-const recipeUrl = '';
-const productUrl = '';
-const videoUrl = '';
-const menuUrl = '';
+const recipeContainer = document.getElementById('recipe-container');
+const apiKey = '5a095273a4624c4496872f4674ee9c6e';
+const recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&`;
+const productUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}`;
+const videoUrl = `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}`;
+const menuUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}`;
+
+const searchHistory = []
 
 
 let currentCategoryIndex = 0;
@@ -27,11 +33,17 @@ categories.forEach((category, index) => {
 
         switch(index){
             case 0:
+                if(!recipeContainer){
+                    searchBtn.addEventListener('click', () => {
+                        search(recipeUrl, query);
+                        searchHistory.push(query);
+                    });
+                }
+                else if(recipeContainer){
+                    search(recipeUrl, searchHistory[0])
+                    searchHistory.push(query);
+                }
 
-                searchBtn.addEventListener('click', () => {
-                    search(recipeUrl, query);
-                    console.log(index);
-                });
                 break
 
             case 1:
@@ -66,8 +78,8 @@ categories.forEach((category, index) => {
 
 
 function search(url, query){
-    fetch(url + query)
-    .then(res => res.json)
+    fetch(`${url}${query}`)
+    .then(res => res.json())
     .then(data => console.log(data))
     .catch(err => console.error(err));
 }
