@@ -76,6 +76,7 @@ body {
     border: 1px solid #000;
     background-color: #fff;
     cursor: pointer;
+    transition: all .3s ease-in-out;
 }
 
 .search-section .bottom {
@@ -94,6 +95,12 @@ body {
     padding: .5em;
     font-size: 1rem;
     cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.search-section .filter:hover, .search-section li:hover {
+    background-color: rgb(27, 40, 7);
+    color: #fff;
+    fill: #fff;
 }
 
 
@@ -159,6 +166,11 @@ body {
     border: 1px solid #000;
     background-color: #fff;
     cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.search-result .pagination button:hover {
+    background-color: rgb(27, 40, 7);
+    color: #fff;
 }
 
 
