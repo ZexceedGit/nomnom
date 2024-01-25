@@ -369,7 +369,7 @@ body {
         align-items: center;
     }
     .features li {
-        width: 100%;
+        width: 70%;
     }
 
     .featured-foods .top, .featured-foods .middle, .featured-foods .bottom {
