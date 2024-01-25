@@ -25,10 +25,10 @@ const paginationDiv = document.getElementById('pagination');
 
 
 const URLs = {
-    recipe: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=18&`,
-    product: `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=18&`,
-    video: `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}&number=18&`,
-    menu: `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}&number=18&`
+    recipe: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=20&`,
+    product: `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=20&`,
+    video: `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}&number=20&`,
+    menu: `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}&number=20&`
 }
 
 const searchHistory = []
@@ -117,11 +117,13 @@ function search(url, query){
     fetch(q)
     .then(res => res.json())
     .then(data => {
-        
+        productDatas = [];
         for(let i = 0; i <= data[datas[0]].length; i+=6){
-            productDatas.push(data[datas[0]].slice(i, i+6));
+            console.log(productDatas.push(data[datas[0]].slice(i, i+6)));
+            console.log(productDatas);
         }
         renderProducts(productDatas, currentIndex)
+        renderPagination()
 
         quantityResult.textContent = 'Results: ' + data[datas[0]].length;
 
@@ -135,16 +137,19 @@ searchBtn.addEventListener('click', () => {
     }
 });
 
-
-productDatas.forEach((item, index) => {
-    const pageBtn = document.createElement('button');
-    pageBtn.textContent = index + 1;
-
-    pageBtn.addEventListener('click', () => {
-        currentIndex = index;
-        renderProducts(productDatas, currentIndex)
+function renderPagination(){
+    paginationDiv.innerHTML = '';
+    productDatas.forEach((item, index) => {
+        const pageBtn = document.createElement('button');
+        pageBtn.textContent = index + 1;
+    
+        pageBtn.addEventListener('click', () => {
+            currentIndex = index;
+            renderProducts(productDatas, currentIndex)
+        });
+    
+        paginationDiv.appendChild(pageBtn);
+    
     });
+}
 
-    paginationDiv.appendChild(pageBtn);
-
-});

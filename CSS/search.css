@@ -96,7 +96,7 @@ body {
     padding: .5em;
     font-size: 1rem;
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 .search-section .filter:hover {
     background-color: rgb(27, 40, 7);
