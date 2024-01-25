@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../CSS/video.css">
+</head>
+<body>
+        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+<!--         <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <div class="video-container">
+                        
+                        <h3 id="title"></h3>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="similar-search">
+                        <h3>Similar Search</h3>
+                        <div class="results">
+                            <div class="video">
+                                <img src="../../assets/images/food.webp" alt="">
+                                <p>see more</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div id="player"></div>
+
+        <script>
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            const title = urlParams.get('title');
+            
+            window.addEventListener('load', () => {
+            
+                var tag = document.createElement('script');
+            
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            
+                var player;
+                function onYouTubeIframeAPIReady() {
+                  player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: YTZGPCCB2FU,
+                    playerVars: {
+                      'playsinline': 1
+                    },
+                    events: {
+                      'onReady': onPlayerReady,
+                      'onStateChange': onPlayerStateChange
+                    }
+                  });
+                }
+            
+                function onPlayerReady(event) {
+                  event.target.playVideo();
+                }
+            
+                var done = false;
+                function onPlayerStateChange(event) {
+                  if (event.data == YT.PlayerState.PLAYING && !done) {
+                    setTimeout(stopVideo, 6000);
+                    done = true;
+                  }
+                }
+                function stopVideo() {
+                  player.stopVideo();
+                }
+            
+                const titleElem = document.getElementById('title');
+                titleElem.textContent = title;
+            })
+
+        </script>
+</body>
+</html>

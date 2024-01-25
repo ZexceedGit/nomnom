@@ -20,10 +20,10 @@ window.addEventListener('load', () => {
     })
     .catch(err => console.error(err));
 
-    const productUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=5&`;   
+    const productUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=3&`;   
 
     const urlVideos = `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}`;
-    fetch(`${urlVideos}&query=vegetables&number=5`)
+    fetch(`${urlVideos}&query=vegetables&number=3`)
     .then(res => res.json())
     .then(data => {
         data.videos.map(videos => {

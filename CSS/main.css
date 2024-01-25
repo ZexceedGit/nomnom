@@ -15,6 +15,7 @@ body {
     font-family: MyFont;
     padding-bottom: 50px;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .bg-color-1 {
@@ -120,9 +121,7 @@ body {
 
 
 .features {
-    border-radius: 1em;
     width: 100%;
-    background-color: rgb(27, 40, 7);
     animation: fadein .3s ease-in-out;
     animation-timeline: view();
 }
@@ -130,6 +129,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    gap: 1em;
 }
 .features li {
     padding: 50px;
@@ -141,6 +141,8 @@ body {
     align-items: center;
     color: #f0f0f0;
     font-family: MyFont;
+/*     border-radius: 1em; */
+    background-color: rgb(27, 40, 7);
 }
 .features p {
     text-align: center;

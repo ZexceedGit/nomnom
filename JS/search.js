@@ -25,10 +25,10 @@ const paginationDiv = document.getElementById('pagination');
 
 
 const URLs = {
-    recipe: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5&`,
-    product: `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=5&`,
-    video: `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}&number=5&`,
-    menu: `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}&number=5&`
+    recipe: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=3&`,
+    product: `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=3&`,
+    video: `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}&number=3&`,
+    menu: `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}&number=3&`
 }
 
 const searchHistory = []
@@ -109,6 +109,21 @@ function renderProducts(arr, index){
         elem.divElem.appendChild(elem.imgElem);
         elem.divElem.appendChild(elem.pElem);
         recipeContainer.appendChild(elem.divElem);
+
+
+        
+        elem.pElem.addEventListener('click', () => {
+            recipeInfo.map((recipe, index) => {
+
+                if(recipe.title && recipe.youTubeId){
+                    getDetails(recipe.youTubeId, datas[0], recipe.title)
+                }
+                else{
+                    getDetails(recipe.id, datas[0])
+                    console.log(recipe.id);
+                }
+            })
+        });
     });
 }
 
@@ -119,8 +134,7 @@ function search(url, query){
     .then(data => {
         productDatas = [];
         for(let i = 0; i <= data[datas[0]].length; i+=6){
-            console.log(productDatas.push(data[datas[0]].slice(i, i+6)));
-            console.log(productDatas);
+            productDatas.push(data[datas[0]].slice(i, i+6))
         }
         renderProducts(productDatas, currentIndex)
         renderPagination()
@@ -151,5 +165,14 @@ function renderPagination(){
         paginationDiv.appendChild(pageBtn);
     
     });
+}
+
+function getDetails(id, type, title){
+    if(type !== 'videos'){
+        window.location.href = `details.html?type=${type}&id=${id}`;
+    }
+    else if(type === 'videos'){
+        window.location.href = `videos.html?id=${id}&title=${title}`;
+    }
 }
 
