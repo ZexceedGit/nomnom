@@ -80,14 +80,14 @@ p {
 .types-container h3, .wine-pairing h3 {
     padding: 1em 0;
 }
-.types, .wine {
+.types, .wines {
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1em;
 }
-.types > p, .wine > p{
+.types > p, .wines > p{
     padding: .5em;
     border: 1px solid;
     width: fit-content;

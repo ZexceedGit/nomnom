@@ -105,11 +105,19 @@ h3 {
     .row {
         flex-direction: column;
         gap: 50px;
+        padding: 50px .5em;
     }
     .col-1 {
         width: 100%;
     }
     .col-2 {
         width: 100%;
+    }
+
+    .video-container {
+        padding: .5em;
+    }
+    .similar-search {
+        padding: .5em;
     }
 }

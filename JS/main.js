@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
     const innerSliderVideos = document.getElementById('inner-slider-videos');
     
     const recipeUrl = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`;
-    fetch(`${recipeUrl}&number=5`)
+    fetch(`${recipeUrl}&number=3`)
     .then(res => res.json())
     .then(data => {
         data.recipes.map(recipe => {
@@ -20,8 +20,22 @@ window.addEventListener('load', () => {
     })
     .catch(err => console.error(err));
 
-    const productUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=3&`;   
+    const productUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&`;   
 
+    fetch(`${productUrl}&query=bottle&number=3`)
+    .then(res => res.json())
+    .then(data => {
+        data.videos.map(videos => {
+            const itemDiv = document.createElement('div');
+            const img = videos.thumbnail;
+
+            itemDiv.className = 'slider-item';
+            itemDiv.style.backgroundImage = `url(${img})`;
+            innerSliderVideos.appendChild(itemDiv);
+
+        });
+    })
+    .catch(err => console.error(err));
     const urlVideos = `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}`;
     fetch(`${urlVideos}&query=vegetables&number=3`)
     .then(res => res.json())
