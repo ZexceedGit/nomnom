@@ -31,8 +31,8 @@ const URLs = {
     menu: `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}&number=3&`
 }
 
-const searchHistory = []
-const searchQuery = []
+const searchHistory = [];
+const searchQuery = [];
 let productDatas = [];
 let currentIndex = 0;
 let datas = [];
@@ -110,19 +110,20 @@ function renderProducts(arr, index){
         elem.divElem.appendChild(elem.pElem);
         recipeContainer.appendChild(elem.divElem);
 
+        console.log(recipeInfo)
+
 
         
         elem.pElem.addEventListener('click', () => {
-            recipeInfo.map((recipe, index) => {
 
-                if(recipe.title && recipe.youTubeId){
-                    getDetails(recipe.youTubeId, datas[0], recipe.title)
-                }
-                else{
-                    getDetails(recipe.id, datas[0])
-                    console.log(recipe.id);
-                }
-            })
+            console.log(recipeInfo)
+            if(recipeInfo.title && recipeInfo.youTubeId){
+                getDetails(recipeInfo.youTubeId, datas[0], recipeInfo.title)
+            }
+            else{
+                getDetails(recipeInfo.id, datas[0])
+                console.log(recipeInfo.id);
+            }
         });
     });
 }
@@ -172,7 +173,7 @@ function getDetails(id, type, title){
         window.location.href = `details.html?type=${type}&id=${id}`;
     }
     else if(type === 'videos'){
-        window.location.href = `videos.html?id=${id}&title=${title}`;
+        window.location.href = `video.html?id=${id}&title=${title}`;
     }
 }
 
