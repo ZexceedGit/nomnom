@@ -17,6 +17,7 @@ const productsDiv = document.getElementById('products');
 window.addEventListener('load', () => {
 
     const URLs = {
+        similarRecipe: `https://api.spoonacular.com/recipes/${id}/similar?apiKey=${apiKey}&number=3`,
         recipe: `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`,
         product: `https://api.spoonacular.com/food/products/${id}?apiKey=${apiKey}`,
         video: `https://api.spoonacular.com/food/videos/search?apikey=${apiKey}`,
@@ -41,6 +42,7 @@ window.addEventListener('load', () => {
             break
 
     }
+    /* similarSearch(URLs.similarRecipe) */
 
 });
 
@@ -51,52 +53,70 @@ function fetchData(url){
     .then(res => res.json())
     .then(data => {
         console.log(data)
-        data[type].map((recipe, index) => {
 
-            recipeImg.src = recipe.image;
-            recipeName.textContent = recipe.title;
-            summaryText.textContent = recipe.summary;
+        recipeImg.src = data.image;
+        recipeName.innerHTML = data.title;
+        summaryText.innerHTML = data.summary;
 
-            recipe.dishTypes.map(dish => {
+        data.dishTypes.map(dish => {
+            const p = document.createElement('p');
+            p.textContent = dish;
+
+            mealType.appendChild(p);
+        });
+
+        // make it a picture its much better than the text of the wine name
+        if(data.winePairing.pairedWines.length > 0 ){
+            data.winePairing.pairedWines.forEach(wine => {
                 const p = document.createElement('p');
-                p.textContent = dish;
-
-                mealType.appendChild(typeP);
-            });
-            recipe.winePairing.map(wine => {
-                const p = document.createElement('p');
-                p.textContent = wine;
-
+                p.innerHTML = wine;
                 winePairing.appendChild(p);
             });
+        }
+        else {
+            const p = document.createElement('p');
+            p.textContent = 'no wine pairing';
+            winePairing.appendChild(p);
+        }
 
-/*             stepsDiv.innerHTML = recipe.intructions; */
-            recipe.analyzedInstructions[0].steps.map(step => {
 
-                const liElem = document.createElement('li');
-                liElem.textContent = step.step;
-            });
+        data.extendedIngredients.map(ingredient => {
 
-            recipe.extendedIngredients.map(ingredient => {
+            const elem = {
+                productDiv: document.createElement('div'),
+                img: document.createElement('img'),
+                p: document.createElement('p')
+            }
+            
+            elem.productDiv.className = 'product';
+            elem.img.src = `https://spoonacular.com/recipeImages/${ingredient.image}`;
+            elem.p.textContent = ingredient.original;
 
-                const elem = {
-                    productDiv: document.createElement('div'),
-                    img: document.createElement('img'),
-                    p: document.createElement('p')
-                }
-                
-                elem.productDiv.className = 'product';
-                elem.img.src = ingredient.image;
-                elem.p.textContent = ingredient.name;
-    
-                elem.productDiv.appendChild(elem.img);
-                elem.productDiv.appendChild(elem.p);
-                productsDiv.appendChild(elem.productDiv);
-
-            });
-
+            elem.productDiv.appendChild(elem.img);
+            elem.productDiv.appendChild(elem.p);
+            productsDiv.appendChild(elem.productDiv);
 
         });
+
+/*             stepsDiv.innerHTML = recipe.intructions; */
+        data.analyzedInstructions[0].steps.map(step => {
+
+            const liElem = document.createElement('li');
+            liElem.textContent = step.step;
+
+            stepsDiv.appendChild(liElem);
+        });
+
+
+    })
+    .catch(err => console.error(err));
+}
+
+function similarSearch(url){
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
     })
     .catch(err => console.error(err));
 }

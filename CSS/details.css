@@ -125,7 +125,7 @@ p {
 .ingredients-container .product {
     width: 12rem;
     height: fit-content;
-/*     border: 1px solid; */
+    border: 1px solid;
 }
 .ingredients-container p {
     width: 100%;
@@ -135,7 +135,7 @@ p {
     font-weight: 100;
 }
 
-.instruction-container ul {
+.instruction-container ol {
     width: 100%;
     padding: 1em;
     display: flex;
@@ -143,8 +143,9 @@ p {
     gap: 1em;
 }
 .instruction-container li {
+    padding: 1em;
     font-size: 1rem;
-    list-style: inside url('../assets/icons/arrow-right-circle.svg');
+    list-style: inside numeric;
 }
 
 
