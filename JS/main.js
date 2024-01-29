@@ -1,7 +1,9 @@
 const apiKey = '5a095273a4624c4496872f4674ee9c6e';
+let dataType = '';
 window.addEventListener('load', () => {
 
     const innerSlider = document.getElementById('inner-slider');
+    const innerSliderProducts = document.getElementById('inner-slider-products');
     const innerSliderVideos = document.getElementById('inner-slider-videos');
     
     const recipeUrl = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`;
@@ -16,22 +18,28 @@ window.addEventListener('load', () => {
             itemDiv.style.backgroundImage = `url(${img})`;
             innerSlider.appendChild(itemDiv);
 
+            itemDiv.addEventListener('click', () => {
+                dataType = 'results';
+                getDetails(recipe.id, dataType)
+            });
+
         });
     })
     .catch(err => console.error(err));
 
+
     const productUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&`;   
 
-    fetch(`${productUrl}&query=bottle&number=3`)
+    fetch(`${productUrl}query=yogurt&number=3`)
     .then(res => res.json())
     .then(data => {
-        data.videos.map(videos => {
+        data.products.map(product => {
             const itemDiv = document.createElement('div');
-            const img = videos.thumbnail;
+            const img = product.image;
 
             itemDiv.className = 'slider-item';
             itemDiv.style.backgroundImage = `url(${img})`;
-            innerSliderVideos.appendChild(itemDiv);
+            innerSliderProducts.appendChild(itemDiv);
 
         });
     })
@@ -47,7 +55,11 @@ window.addEventListener('load', () => {
             itemDiv.className = 'slider-item';
             itemDiv.style.backgroundImage = `url(${img})`;
             innerSliderVideos.appendChild(itemDiv);
-
+            
+            itemDiv.addEventListener('click', () => {
+                dataType = 'videos';
+                getDetails(videos.youTubeId, dataType, videos.title)
+            });
         });
     })
     .catch(err => console.error(err));
@@ -76,3 +88,12 @@ setInterval(() => {
         currentStep = 0;
     }
 }, 3000);
+
+function getDetails(id, type, title){
+    if(type !== 'videos'){
+        window.location.href = `../pages/details.html?type=${type}&id=${id}`;
+    }
+    else if(type === 'videos'){
+        window.location.href = `../pages/video.html?id=${id}&title=${title}`;
+    }
+}
