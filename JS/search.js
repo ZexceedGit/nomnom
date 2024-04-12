@@ -25,10 +25,10 @@ const paginationDiv = document.getElementById('pagination');
 
 
 const URLs = {
-    recipe: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=1&`,
-    product: `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=1&`,
-    video: `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}&number=1&`,
-    menu: `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}&number=1&`
+    recipe: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=10&`,
+    product: `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&number=10&`,
+    video: `https://api.spoonacular.com/food/videos/search?apiKey=${apiKey}&number=10&`,
+    menu: `https://api.spoonacular.com/food/menuItems/search?apiKey=${apiKey}&number=10&`
 }
 
 const searchHistory = [];
